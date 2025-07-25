@@ -18,6 +18,7 @@ import {
 } from '../../common/helpers';
 
 export default async function manifestEndpoint(req: NextApiRequest, res: NextApiResponse) {
+  console.log(req.method);
   if (req.method !== 'GET') {
     res.statusCode = 405;
     res.json({ error: 'Expected GET.' });
@@ -123,10 +124,11 @@ async function putUpdateInResponseAsync(
     throw new NoUpdateAvailableError();
   }
 
-  const expoConfig = await getExpoConfigAsync({
-    updateBundlePath,
-    runtimeVersion,
-  });
+  // const expoConfig = await getExpoConfigAsync({
+  //   updateBundlePath,
+  //   runtimeVersion,
+  // });
+  const expoConfig = null;
   const platformSpecificMetadata = metadataJson.fileMetadata[platform];
   const manifest = {
     id: convertSHA256HashToUUID(id),
@@ -177,7 +179,7 @@ async function putUpdateInResponseAsync(
     });
     signature = serializeDictionary(dictionary);
   }
-
+console.log(JSON.stringify(manifest))
   const assetRequestHeaders: { [key: string]: object } = {};
   [...manifest.assets, manifest.launchAsset].forEach((asset) => {
     assetRequestHeaders[asset.key] = {
