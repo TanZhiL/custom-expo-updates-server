@@ -40,7 +40,7 @@ The flow for creating an update is as follows:
 **.env.local中指定dist下载地址，updates.url一般为当前服务器地址**
 
 **android mainfest.xml中指定服务器地址**
- “<meta-data android:name="expo.modules.updates.EXPO_UPDATE_URL" android:value="http://172.20.131.136:3000/api/manifest" />”
+ “<‘meta-data’ android:name="expo.modules.updates.EXPO_UPDATE_URL" android:value="http://172.20.131.136:3000/api/manifest" />”
 
 Note: The app is configured to load updates from the server running at http://localhost:3000. If you prefer to load them from a different base URL (for example, in an Android emulator):
 1. Update `.env.local` in the server.
