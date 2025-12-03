@@ -66,6 +66,9 @@ Let's make a change to the project in /expo-updates-client that we'll want to pu
 
 **复制客户端dist内容到服务端updates/时间戳文件夹下**
 
+
+**服务端执行npm run expo-publish-rollback命令产生回滚包**
+
 Once you've made a change you're happy with, inside of **/expo-updates-server**, run `npm run expo-publish`. Under the hood, this script runs `npx expo export` in the client, copies the exported app to the server, and then copies the Expo config to the server as well.
 
 ### Send an update
