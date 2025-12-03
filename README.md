@@ -25,8 +25,8 @@ To understand this repo, it's important to understand some terminology around up
 
 The flow for creating an update is as follows:
 
-node run build
-node run start
+**node run build**
+**node run start**
 
 1. Configure and build a "release" version of an app, then run it on a simulator or deploy to an app store.
 2. Run the project locally, make changes, then export the app as an update.
@@ -37,8 +37,12 @@ node run start
 
 ## The setup
 
-.env.local中指定dist下载地址，updates.url一般为当前服务器地址
+**.env.local中指定dist下载地址，updates.url一般为当前服务器地址**
 
+**android mainfest.xml中指定服务器地址**
+ **<meta-data
+            android:name="expo.modules.updates.EXPO_UPDATE_URL"
+            android:value="http://172.20.131.136:3000/api/manifest" />**
 
 Note: The app is configured to load updates from the server running at http://localhost:3000. If you prefer to load them from a different base URL (for example, in an Android emulator):
 1. Update `.env.local` in the server.
@@ -54,15 +58,15 @@ Run `yarn` and `npm run ios -- --mode="Release"`.
 
 #### Android
 
-yarn android --variant release
+**yarn android --variant release**
 
 ### Make a change
 
 Let's make a change to the project in /expo-updates-client that we'll want to push as an over-the-air update from our custom server to the "release" app. `cd` in to **/expo-updates-client**, then make a change in **App.js**.
 
-npx expo export
+**客户端执行 npx expo export**
 
-复制客户端dist内容到服务端updates/时间戳文件夹下
+**复制客户端dist内容到服务端updates/时间戳文件夹下**
 
 Once you've made a change you're happy with, inside of **/expo-updates-server**, run `npm run expo-publish`. Under the hood, this script runs `npx expo export` in the client, copies the exported app to the server, and then copies the Expo config to the server as well.
 
